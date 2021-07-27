@@ -11,7 +11,6 @@ variable "sub_cidr_block" {
 }
 
 variable "my_ip" {}
-variable "instance_type" {}
 variable "ssh_key_private" {}
 
 resource "aws_vpc" "marcos-vpc-test" {
@@ -112,7 +111,7 @@ data "aws_ami" "latest-amazon-linux-image" {
 
 resource "aws_instance" "marcos-server" {
     ami = data.aws_ami.latest-amazon-linux-image.id
-    instance_type = var.instance_type 
+    instance_type = "t2.micro"
     subnet_id = aws_subnet.marcos-subnet-test.id
     vpc_security_group_ids = [aws_security_group.marcos-sg.id]
     availability_zone = "eu-west-2a"

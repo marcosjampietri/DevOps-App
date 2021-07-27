@@ -1,5 +1,17 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+/terraform/.terraform/*
+/terraform/*.tfstate
+/terraform/*.tfstate.*
+/terraform/*.tfvars
+
+terraform/.terraform/*
+terraform/*.tfstate
+terraform/*.tfstate.*
+terraform/*.tfvars
+
+
+
 /.nova
 
 # dependencies
