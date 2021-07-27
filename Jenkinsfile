@@ -12,29 +12,36 @@ pipeline {
         stage("init") {
             steps {
                 script {
-                   echo "Deploying"
+                   gv = load "script.groovy"
                 }
             }
         }
         stage("build") {
             steps {
                 script {
-                    echo "Deploying"
+                    gv.buildApp()
                 }
             }
         }
         stage("test") {
+            when {
+                expression {
+                    params.executeTests
+                }
+            }
             steps {
                 script {
-                    echo "Deploying"
+                    gv.testApp()
                 }
             }
         }
         stage("deploy") {
             steps {
                 script {
+                    env.ENV = input message: "Select the environment to deploy to", ok: "Done", parameters: [choice(name: 'ONE', choices: ['dev', 'staging', 'prod'], description: '')]
 
-                    echo "Deploying to"
+                    gv.deployApp()
+                    echo "Deploying to ${ENV}"
                 }
             }
         }
