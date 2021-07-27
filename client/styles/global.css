@@ -1,0 +1,47 @@
+@font-face {
+    font-family: "Oswald Regular";
+    src: url("/fonts/Oswald-Regular.ttf") format("truetype");
+    src: url("/fonts/Oswald-Regular.eot");
+    src: url("/fonts/Oswald-Regular.eot?#iefix") format("embedded-opentype"),
+        url("/fonts/Oswald-Regular.woff2") format("woff2"),
+        url("/fonts/Oswald-Regular.woff") format("woff"),
+        url("/fonts/Oswald-Regular.svg#Oswald-Regular") format("svg");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Neon Heavy";
+    src: url("/fonts/Neon-Heavy.ttf") format("truetype");
+    src: url("/fonts/Neon-Heavy.eot");
+    src: url("/fonts/Neon-Heavy.eot?#iefix") format("embedded-opentype"),
+        url("/fonts/Neon-Heavy.woff2") format("woff2"),
+        url("/fonts/Neon-Heavy.woff") format("woff"),
+        url("/fonts/Neon-Heavy.svg#Neon-Heavy") format("svg");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+    color: hsla(240, 10%, 50%, 1);
+    padding: 0;
+    margin: 0;
+
+    font-family: Oswald Regular;
+
+    letter-spacing: 0.2em;
+    line-height: 1;
+    text-decoration: none;
+    list-style: none;
+
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+}
+
+a {
+    text-decoration: none;
+}

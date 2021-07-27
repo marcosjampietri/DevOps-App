@@ -1,0 +1,8 @@
+
+modules
+modules/*
+modules*
+*/modules
+**/modules
+
+!src

@@ -1,9 +1,10 @@
 #!/usr/bin/env groovy
 
-def buildJar() {
-    echo "building the application..."
-    sh 'mvn package'
-} 
+
+def testApp() {
+    echo "1, 2, 3... testing, tasting..."
+
+}
 
 def buildImage() {
     echo "building the docker image..."
@@ -16,10 +17,6 @@ def buildImage() {
         sh 'docker push marcosjampietri/Kajabi_client'
         sh 'docker push marcosjampietri/Kajabi_api'
     }
-} 
-
-def deployApp() {
-    echo 'deploying the application...'
 } 
 
 return this
