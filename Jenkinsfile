@@ -52,7 +52,6 @@ pipeline {
                          -var 'my_ip=${MY_IP}' \
                          -var 'ssh_key_private=${SSH_KEY_SECRET}' \
                          --auto-approve"
-                       # sh "terraform apply --auto-approve"
                        EC2_IP = sh(
                            script: "terraform output ec2_public_ip",
                            returnStdout: true
