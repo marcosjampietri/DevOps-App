@@ -39,8 +39,8 @@ pipeline {
             environment {
                 AWS_ACCESS_KEY_ID = credentials('jenkins_aws_access_key_id')
                 AWS_SECRET_ACCESS_KEY = credentials('jenkins_aws_secret_access_key')
-                my_ip = credentials('my_ip')
-                ssh_key_private = credentials('ssh_key_private')
+                TF_VAR_my_ip = ${params.my_ip}
+                TF_VAR_ssh_key_private = ${params.ssh_key_private}
                 
             }
             steps {
