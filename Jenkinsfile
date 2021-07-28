@@ -39,20 +39,25 @@ pipeline {
             environment {
                 AWS_ACCESS_KEY_ID = credentials('jenkins_aws_access_key_id')
                 AWS_SECRET_ACCESS_KEY = credentials('jenkins_aws_secret_access_key')
-                TF_VAR_my_ip = ${params.my_ip}
-                TF_VAR_ssh_key_private = ${params.ssh_key_private}
+                SSH_KEY_SECRET = credentials('ssh_key_private')
                 
             }
             steps {
                 script {
                    echo 'provisioning server on AWS'
                    dir('terraform') {
+                       withCredentials([string(credentialsId: 'my-ip', variable: 'MY_IP')]) {
                        sh "terraform init"
-                       sh "terraform apply --auto-approve"
+                       sh "terraform apply \
+                         -var 'my_ip=$(MY_IP)' \
+                         -var 'ssh_key_private=$(SSH_KEY_SECRET)' \
+                         --auto-approve"
+                       # sh "terraform apply --auto-approve"
                        EC2_IP = sh(
                            script: "terraform output ec2_public_ip",
                            returnStdout: true
                        ).trim()
+                       }
                    }
                 }
             }
