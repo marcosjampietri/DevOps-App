@@ -49,8 +49,8 @@ pipeline {
                    dir('terraform') {
                        sh "terraform init"
                        sh "terraform apply \
-                         -var 'my_ip=$(MY_IP)' \
-                         -var 'ssh_key_private=$(SSH_KEY_SECRET)' \
+                         -var 'my_ip=${MY_IP}' \
+                         -var 'ssh_key_private=${SSH_KEY_SECRET}' \
                          --auto-approve"
                        # sh "terraform apply --auto-approve"
                        EC2_IP = sh(
