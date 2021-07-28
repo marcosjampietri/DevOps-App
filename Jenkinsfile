@@ -16,6 +16,20 @@ pipeline {
                 }
             }
         }
+        stage("Copy files to Ansible serve") {
+            steps {
+                script {
+                    echo "copying all the stuff... don't bother"
+                    sshagent(['ansible_server_key']) {
+                        sh "scp -o StrictHostKeyChecking=no ansible/* root@138.68.128.195:/root"
+                        withCredentials([sshUserPrivateKey(credentialsId: 'ec2-server-key', keyFileVariable: 'KEYFILE', usernameVariable: 'USER')]) {
+                            sh "scp ${KEYFILE} root@138.68.128.195:/root/docker-server.pem"
+                        }
+                        
+                    }
+                }
+            }
+        }
         stage("test") {
             when {
                 expression {
